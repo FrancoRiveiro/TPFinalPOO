@@ -15,7 +15,7 @@ namespace Trabajo_Final_p1
     public partial class FormRegistro: Form
     {
         public Form registrar;
-        GestorCliente gestor;
+        GestorCliente gestor = new GestorCliente();
 
         List<Cliente> Listcliente = new List<Cliente>();
 
