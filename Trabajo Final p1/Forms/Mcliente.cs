@@ -8,18 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Trabajo_Final_p1
+namespace Trabajo_Final_p1.Forms
 {
-    public partial class Form3 : Form
+    public partial class Mcliente : Form
     {
-    
-
-        public Form3()
+        public Mcliente()
         {
             InitializeComponent();
         }
 
-        private void Form3_Load(object sender, EventArgs e)
+        private void btnAceptar_Click(object sender, EventArgs e)
         {
 
         }

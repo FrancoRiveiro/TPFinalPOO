@@ -13,8 +13,8 @@ namespace Trabajo_Final_p1
 {
     public partial class SistemaViajes : Form
     {
-        private Form2 login;
-        private Form3 catalogo;
+        private Login login;
+        private Catalogo catalogo;
         private FormRegistro registrar;
         private Form5 agregarEm;
         private GestionarCliente gestionarCliente;
@@ -38,7 +38,7 @@ namespace Trabajo_Final_p1
 
         private void inicioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            catalogo = new Form3();
+            catalogo = new Catalogo();
             catalogo.FormClosed += new FormClosedEventHandler(cerrarForms);
             catalogo.MdiParent = this;
 
@@ -55,7 +55,7 @@ namespace Trabajo_Final_p1
         {
             if (login == null)
             {
-                login = new Form2();
+                login = new Login();
                 //login.MdiParent = this;
                 login.FormClosed += new FormClosedEventHandler(cerrarForms);
                 login.Form1 = this;

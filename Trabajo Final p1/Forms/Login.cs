@@ -11,14 +11,14 @@ using Trabajo_Final_p1.Clases;
 
 namespace Trabajo_Final_p1
 {
-    public partial class Form2 : Form
+    public partial class Login : Form
     {
         public Form Form1;
 
         public FormRegistro registrar;
         
  
-        public Form2()
+        public Login()
         {
             InitializeComponent();
         }

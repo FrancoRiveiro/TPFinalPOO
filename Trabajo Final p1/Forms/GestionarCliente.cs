@@ -15,24 +15,36 @@ namespace Trabajo_Final_p1.Forms
     public partial class GestionarCliente: Form
     {
         public GestorCliente gestor = new GestorCliente();
-        List<Cliente> clientes = new List<Cliente>();
+       
+        
+       
 
         public GestionarCliente()
         {
-            InitializeComponent();
+            InitializeComponent(); 
+           dataGridView1.DataSource = gestor.clientes; // Asignar la lista de clientes al DataGridView
         }
 
         private void GestionarCliente_Load(object sender, EventArgs e)
         {
-            this.ActualizarGrilla();
-            gestor.CargarLista();
+            // pongo el estado del formulario en maximizado desde el load porque si no se ajusta mal desde la propiedades
+
+            this.WindowState = FormWindowState.Maximized;
+
+
+            //esto quedo inutilizado porque ahora se carga la lista de clientes desde el gestor
+            // this.ActualizarGrilla();
+            // gestor.CargarLista();
+
+
         }
 
 
         public void ActualizarGrilla() 
         {
-            // Cargar los datos del archivo de texto en la grilla
-            
+            dataGridView1.Refresh();
+ 
+            /*Cargar los datos del archivo de texto en la grilla
             try
             {
                 FileStream fs = new FileStream("Clientes.csv", FileMode.OpenOrCreate, FileAccess.Read);
@@ -48,30 +60,44 @@ namespace Trabajo_Final_p1.Forms
                             clientes.Add(cliente);
                         }
                     }
-                    dataGridView1.DataSource = clientes;
+                    dataGridView1.DataSource = clientes;    
                 }
             }
             catch (Exception ex)
             {
-                // Manejo de errores al cargar los datos
-
-                MessageBox.Show($"Error al cargar los datos: {ex.Message}");
-            }
-              
-
+                // Manejo de errores al cargar los dato
+               MessageBox.Show($"Error al cargar los datos: {ex.Message}");
+            }  
+            */
         }
 
+        //boton de eliminar deberia llamarse btnEliminar, ojo 
         private void button2_Click(object sender, EventArgs e)
         {
             try {
 
                 Cliente selec = (Cliente)dataGridView1.CurrentRow.DataBoundItem;
-                // El gestor elimina el cliente del CSV
-                gestor.Eliminar(selec);
-                // Ahora lo removemos de la lista Local
-                clientes.Remove(selec);
-                //Ahora se actualiza el datagrid con la nueva lectura del csv
-                this.ActualizarGrilla();
+                if (selec == null)
+                {
+                    MessageBox.Show("Debe seleccionar un cliente para eliminar.", "Selección Inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                DialogResult confirmResult = MessageBox.Show(
+          $"¿Está seguro de que desea eliminar a {selec.Nombre} {selec.Apellido} (DNI: {selec.DNI})?",
+          "Confirmar Eliminación",
+          MessageBoxButtons.YesNo,
+          MessageBoxIcon.Question);
+
+
+                if (confirmResult == DialogResult.Yes)
+                {
+                    gestor.Eliminar(selec.DNI);
+                    this.ActualizarGrilla();
+                }
+
+         
+               //
+               //this.ActualizarGrilla();
                 
                
             }
@@ -83,15 +109,39 @@ namespace Trabajo_Final_p1.Forms
 
         }
 
+        //boton para modificar 
         private void button1_Click(object sender, EventArgs e)
         {
-            try 
-            { 
 
-            
+
+            try 
+            {
+                Mcliente mc = new Mcliente();
+                Cliente selec = (Cliente)dataGridView1.CurrentRow.DataBoundItem;
+
+               /* if (selec == null)
+                {
+                    MessageBox.Show("Debe seleccionar un cliente para modificar.", "Selección Inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }*/
+              
+
+                 
+
+
+             
+
             }
             catch { }  
             
+        }
+
+
+        //boton para actualizar lista
+        private void button3_Click(object sender, EventArgs e)
+        {
+            gestor.CargarLista();
+            this.ActualizarGrilla();
+
         }
     }
 }

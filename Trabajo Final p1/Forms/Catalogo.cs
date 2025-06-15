@@ -10,14 +10,16 @@ using System.Windows.Forms;
 
 namespace Trabajo_Final_p1
 {
-    public partial class Form5: Form
+    public partial class Catalogo : Form
     {
-        public Form5()
+    
+
+        public Catalogo()
         {
             InitializeComponent();
         }
 
-        private void Form5_Load(object sender, EventArgs e)
+        private void Form3_Load(object sender, EventArgs e)
         {
 
         }

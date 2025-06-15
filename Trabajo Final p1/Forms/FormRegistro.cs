@@ -15,13 +15,14 @@ namespace Trabajo_Final_p1
     public partial class FormRegistro: Form
     {
         public Form registrar;
-        GestorCliente gestor;
 
-        List<Cliente> Listcliente = new List<Cliente>();
+        private GestorCliente gestor = new GestorCliente();
+
 
         public FormRegistro()
         {
             InitializeComponent();
+
         }
 
         private void Form4_Load(object sender, EventArgs e)
@@ -31,27 +32,32 @@ namespace Trabajo_Final_p1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Intenta crear el cliente con los datos de los textbox
-            try {
-                string Nombre = this.textBox1.Text;
-                string Apellido = this.textBox2.Text;
-                string Email = this.textBox3.Text;
-                int Telefono = Convert.ToInt32(this.textBox4.Text);
-                int DNI = Convert.ToInt32(this.textBox5.Text);
-                Cliente cliente = new Cliente(Nombre, Apellido, Email, Telefono, DNI)
-                { };
 
-                gestor.Agregar(cliente);
+                // Intenta crear el cliente con los datos de los textbox
+                try {
+                    string Nombre = this.textBox1.Text;
+                    string Apellido = this.textBox2.Text;
+                    string Email = this.textBox3.Text;
+                    int Telefono = Convert.ToInt32(this.textBox4.Text);
+                    int DNI = Convert.ToInt32(this.textBox5.Text);
+                    Cliente cliente = new Cliente(Nombre, Apellido, Email, Telefono, DNI)
+                    { };
 
-                Listcliente.Add(cliente);
-                
-               
+                    gestor.Agregar(cliente);
+
+                 
+
+                    this.DialogResult = DialogResult.OK; // Indica que el registro fue exitoso
+                    MessageBox.Show("Cliente registrado exitosamente");
+                    this.Close(); // Cierra el formulario después de registrar al cliente
+
+
             }//Atrapa un error si hay un campo nulo
-            catch (ArgumentNullException )
-            {
-                MessageBox.Show("Debe completar todos los campos");
-            }
-
+            catch (ArgumentNullException)
+                {
+                    MessageBox.Show("Debe completar todos los campos");
+                }
+            
             
 
         }
