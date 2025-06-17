@@ -16,6 +16,7 @@ namespace Trabajo_Final_p1
     {
         public Form registrar;
 
+
         private GestorCliente gestor = new GestorCliente();
 
 
