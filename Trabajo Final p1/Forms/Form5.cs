@@ -16,5 +16,10 @@ namespace Trabajo_Final_p1
         {
             InitializeComponent();
         }
+
+        private void Form5_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

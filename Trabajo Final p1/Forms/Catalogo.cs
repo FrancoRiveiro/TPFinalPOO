@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace Trabajo_Final_p1
 {
-    public partial class Form3 : Form
+    public partial class Catalogo : Form
     {
     
 
-        public Form3()
+        public Catalogo()
         {
             InitializeComponent();
         }

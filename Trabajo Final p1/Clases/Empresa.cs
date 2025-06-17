@@ -25,7 +25,30 @@ namespace Trabajo_Final_p1.Clases
             set { _nombre = value; }
         }
 
+        private int _CodPostal;
+        public  int CodPostal
+        {
+            get { return _CodPostal; }
+            set { _CodPostal = value; }
+        }
+       
+        
+        private string _Direccion;
+        public string  Direccion 
+        {
+            get { return  _Direccion; }
+            set {  _Direccion = value; }
+        }
+
+        internal List<Viaje> ListPaquetes;
 
 
+        public Empresa(int IdEmp,string Nom,int codPos,string direccion )
+        {
+            this.IDEmpresa = IdEmp;
+            this.Nombre = Nom;
+            this.CodPostal = codPos;
+            this.Direccion = direccion;
+        }
     }
 }

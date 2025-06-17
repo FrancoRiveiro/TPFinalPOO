@@ -30,6 +30,29 @@ namespace Trabajo_Final_p1.Clases
             get { return _dni; }
             set { _dni = value; }
         }
+        private string _Contraseña;
+
+        public string Contraseña
+        {
+            get { return _Contraseña; }
+            set { _Contraseña = value; }
+        }
+        private string _Email;
+
+        public string Email
+        {
+            get { return _Email; }
+            set { _Email = value; }
+        }
+
+        private Boolean _rol;
+
+        public Boolean Rol
+        {
+            get { return _rol; }
+            set { _rol = value; }
+        }
+
 
 
     }

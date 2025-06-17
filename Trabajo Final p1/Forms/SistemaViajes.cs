@@ -13,11 +13,11 @@ namespace Trabajo_Final_p1
 {
     public partial class SistemaViajes : Form
     {
-        private Form2 login;
-        private Form3 catalogo;
+        private Login login;
+        private Catalogo catalogo;
         private FormRegistro registrar;
-        private Form5 agregarEm;
-        private GestionarCliente gestionarCliente;
+        private GestionEmpresa gestionEmpresa;
+        private GestionCliente gestionarCliente;
 
         public SistemaViajes()
         {
@@ -38,7 +38,7 @@ namespace Trabajo_Final_p1
 
         private void inicioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            catalogo = new Form3();
+            catalogo = new Catalogo();
             catalogo.FormClosed += new FormClosedEventHandler(cerrarForms);
             catalogo.MdiParent = this;
 
@@ -55,7 +55,7 @@ namespace Trabajo_Final_p1
         {
             if (login == null)
             {
-                login = new Form2();
+                login = new Login();
                 //login.MdiParent = this;
                 login.FormClosed += new FormClosedEventHandler(cerrarForms);
                 login.Form1 = this;
@@ -80,18 +80,20 @@ namespace Trabajo_Final_p1
 
         }
 
-        private void agregarEmpresaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            agregarEm = new Form5();
-            agregarEm.MdiParent = this;
-            agregarEm.Show();
-        }
+   
 
         private void gestionarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            gestionarCliente = new GestionarCliente();
+            gestionarCliente = new GestionCliente();
             gestionarCliente.MdiParent = this;
             gestionarCliente.Show();
+        }
+
+        private void EmpresaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            gestionEmpresa = new GestionEmpresa();
+            gestionEmpresa.MdiParent = this;
+            gestionEmpresa.Show();
         }
     }
 }

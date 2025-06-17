@@ -11,14 +11,14 @@ using Trabajo_Final_p1.Clases;
 
 namespace Trabajo_Final_p1
 {
-    public partial class Form2 : Form
+    public partial class Login : Form
     {
         public Form Form1;
 
         public FormRegistro registrar;
         
  
-        public Form2()
+        public Login()
         {
             InitializeComponent();
         }
@@ -40,20 +40,13 @@ namespace Trabajo_Final_p1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string Nombre = this.textBox1.Text;
-            string Apellido = this.textBox2.Text;
-            string Email = this.textBox3.Text;
-            int Telefono = Convert.ToInt32(this.textBox4.Text);
-            int DNI = Convert.ToInt32(this.textBox5.Text);
 
 
 
-            Cliente cliente = new Cliente(Nombre, Apellido,Email, Telefono, DNI)
-            { };
-
-            Listcliente.Add(cliente);
-
-            MessageBox.Show($"{Nombre} + {Apellido} + {Email} + {Telefono} + {DNI}");
+            string Contraseña = this.textContra.Text;
+            string Email =this.textEmail.Text;
+       
+            MessageBox.Show($"{Email} + {Contraseña}");
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
