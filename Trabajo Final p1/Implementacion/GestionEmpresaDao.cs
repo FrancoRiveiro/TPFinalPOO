@@ -76,7 +76,6 @@ namespace Trabajo_Final_p1.Implementacion
                     {
                         if (empresaR.IDEmpresa != idEmpresa)
                         {
-                            string linea = ($"{empresaR.IDEmpresa};{empresaR.Nombre};{empresaR.CodPostal}{empresaR.Direccion}");
                             sw.WriteLine(linea);
                         }
                     }

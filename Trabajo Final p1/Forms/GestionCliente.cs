@@ -102,7 +102,7 @@ namespace Trabajo_Final_p1.Forms
         //boton para actualizar lista
         private void button3_Click(object sender, EventArgs e)
         {
-            gestor.CargarLista();
+           // gestor.CargarLista();
             this.ActualizarGrilla();
 
         }

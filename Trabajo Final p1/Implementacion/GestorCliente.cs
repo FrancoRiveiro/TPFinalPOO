@@ -74,7 +74,7 @@ namespace Trabajo_Final_p1.Clases
                     foreach (var clienteR in clientes)
                     {
                         if (clienteR.DNI !=dni) {
-                            string linea = ($"{clienteR.Nombre};{clienteR.Apellido};{clienteR.Contraseña}{clienteR.Email};{clienteR.Telefono};{clienteR.DNI}");
+                            string linea = ($"{clienteR.Nombre};{clienteR.Apellido};{clienteR.Contraseña};{clienteR.Email};{clienteR.Telefono};{clienteR.DNI}");
                             sw.WriteLine(linea);
                         }
                     }
