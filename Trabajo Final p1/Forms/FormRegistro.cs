@@ -40,7 +40,9 @@ namespace Trabajo_Final_p1
                     string Email = this.textBox3.Text;
                     int Telefono = Convert.ToInt32(this.textBox4.Text);
                     int DNI = Convert.ToInt32(this.textBox5.Text);
-                    Cliente cliente = new Cliente(Nombre, Apellido, Email, Telefono, DNI)
+                    string Contraseña = this.textBox6.Text;
+                
+                    Cliente cliente = new Cliente(Nombre, Apellido,Contraseña, Email, Telefono, DNI)
                     { };
 
                     gestor.Agregar(cliente);
@@ -69,6 +71,66 @@ namespace Trabajo_Final_p1
         {
             this.Close();
             
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

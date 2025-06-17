@@ -16,8 +16,8 @@ namespace Trabajo_Final_p1
         private Login login;
         private Catalogo catalogo;
         private FormRegistro registrar;
-        private Form5 agregarEm;
-        private GestionarCliente gestionarCliente;
+        private GestionEmpresa gestionEmpresa;
+        private GestionCliente gestionarCliente;
 
         public SistemaViajes()
         {
@@ -80,18 +80,20 @@ namespace Trabajo_Final_p1
 
         }
 
-        private void agregarEmpresaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            agregarEm = new Form5();
-            agregarEm.MdiParent = this;
-            agregarEm.Show();
-        }
+   
 
         private void gestionarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            gestionarCliente = new GestionarCliente();
+            gestionarCliente = new GestionCliente();
             gestionarCliente.MdiParent = this;
             gestionarCliente.Show();
+        }
+
+        private void EmpresaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            gestionEmpresa = new GestionEmpresa();
+            gestionEmpresa.MdiParent = this;
+            gestionEmpresa.Show();
         }
     }
 }

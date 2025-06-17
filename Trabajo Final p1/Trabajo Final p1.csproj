@@ -65,14 +65,26 @@
     <Compile Include="Clases\Cliente.cs" />
     <Compile Include="Clases\Destino.cs" />
     <Compile Include="Clases\Empresa.cs" />
+    <Compile Include="Forms\GestorEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GestorEmpresa.Designer.cs">
+      <DependentUpon>GestorEmpresa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Mcliente.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Mcliente.Designer.cs">
       <DependentUpon>Mcliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\GestionEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GestionEmpresa.Designer.cs">
+      <DependentUpon>GestionEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Implementacion\GestionEmpresaDao.cs" />
     <Compile Include="Implementacion\GestorCliente.cs" />
-    <Compile Include="Interfaces\IGCliente.cs" />
     <Compile Include="Clases\Persona.cs" />
     <Compile Include="Clases\Viaje.cs" />
     <Compile Include="Forms\SistemaViajes.cs">
@@ -105,16 +117,23 @@
     <Compile Include="Forms\Form5.Designer.cs">
       <DependentUpon>Form5.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\GestionarCliente.cs">
+    <Compile Include="Forms\GestionCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\GestionarCliente.Designer.cs">
-      <DependentUpon>GestionarCliente.cs</DependentUpon>
+    <Compile Include="Forms\GestionCliente.Designer.cs">
+      <DependentUpon>GestionCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IGestor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\Form5.resx">
       <DependentUpon>Form5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GestionEmpresa.resx">
+      <DependentUpon>GestionEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GestorEmpresa.resx">
+      <DependentUpon>GestorEmpresa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Mcliente.resx">
       <DependentUpon>Mcliente.cs</DependentUpon>
@@ -131,8 +150,8 @@
     <EmbeddedResource Include="Forms\FormRegistro.resx">
       <DependentUpon>FormRegistro.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\GestionarCliente.resx">
-      <DependentUpon>GestionarCliente.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\GestionCliente.resx">
+      <DependentUpon>GestionCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -31,8 +31,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.inicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.holaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.adiosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.agregarEmpresaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.EmpresaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionarEmpresaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LoginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,12 +47,11 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.inicioToolStripMenuItem,
             this.holaToolStripMenuItem,
-            this.adiosToolStripMenuItem,
+            this.EmpresaToolStripMenuItem,
             this.LoginToolStripMenuItem,
             this.clienteToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
             this.menuStrip1.Size = new System.Drawing.Size(1364, 33);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
@@ -72,27 +70,20 @@
             this.holaToolStripMenuItem.Text = "hola";
             this.holaToolStripMenuItem.Click += new System.EventHandler(this.holaToolStripMenuItem_Click);
             // 
-            // adiosToolStripMenuItem
+            // EmpresaToolStripMenuItem
             // 
-            this.adiosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.agregarEmpresaToolStripMenuItem,
+            this.EmpresaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gestionarEmpresaToolStripMenuItem});
-            this.adiosToolStripMenuItem.Name = "adiosToolStripMenuItem";
-            this.adiosToolStripMenuItem.Size = new System.Drawing.Size(74, 29);
-            this.adiosToolStripMenuItem.Text = "Adios";
-            // 
-            // agregarEmpresaToolStripMenuItem
-            // 
-            this.agregarEmpresaToolStripMenuItem.Name = "agregarEmpresaToolStripMenuItem";
-            this.agregarEmpresaToolStripMenuItem.Size = new System.Drawing.Size(262, 34);
-            this.agregarEmpresaToolStripMenuItem.Text = "Agregar Empresa";
-            this.agregarEmpresaToolStripMenuItem.Click += new System.EventHandler(this.agregarEmpresaToolStripMenuItem_Click);
+            this.EmpresaToolStripMenuItem.Name = "EmpresaToolStripMenuItem";
+            this.EmpresaToolStripMenuItem.Size = new System.Drawing.Size(96, 29);
+            this.EmpresaToolStripMenuItem.Text = "Empresa";
+            this.EmpresaToolStripMenuItem.Click += new System.EventHandler(this.EmpresaToolStripMenuItem_Click);
             // 
             // gestionarEmpresaToolStripMenuItem
             // 
             this.gestionarEmpresaToolStripMenuItem.Name = "gestionarEmpresaToolStripMenuItem";
-            this.gestionarEmpresaToolStripMenuItem.Size = new System.Drawing.Size(262, 34);
-            this.gestionarEmpresaToolStripMenuItem.Text = "Gestionar Empresa";
+            this.gestionarEmpresaToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.gestionarEmpresaToolStripMenuItem.Text = "Gestionar ";
             // 
             // LoginToolStripMenuItem
             // 
@@ -156,10 +147,9 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem inicioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem holaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem adiosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem EmpresaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem LoginToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripMenuItem agregarEmpresaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionarEmpresaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionarToolStripMenuItem;

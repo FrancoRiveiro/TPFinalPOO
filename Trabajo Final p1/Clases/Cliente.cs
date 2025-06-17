@@ -11,18 +11,17 @@ namespace Trabajo_Final_p1.Clases
         //Hereda Nombre, apellido y DNI de la clase abstracta Persona
 
         //Constructor
-        public Cliente(string Nombre, string Apellido, string Email,int Telefono,int DNI)
+        public Cliente(string Nombre, string Apellido,string Contraseña, string Email,int Telefono,int DNI)
         
         {
          this.Nombre = Nombre;
          this.Apellido = Apellido;
+         this.Contraseña = Contraseña;
          this.Email = Email;
          this.Telefono = Telefono;
          this.DNI = DNI;
-
-            
-        
-        
+         this.Rol = false; // Rol de Cliente es false por defecto
+ 
         }
 
 
@@ -35,14 +34,7 @@ namespace Trabajo_Final_p1.Clases
             set { _telefono = value; }
         }
 
-        private string _email;
-
-        public string Email
-        {
-            get { return _email; }
-            set { _email = value; }
-        }
-
+       
         internal List<Viaje> ListaViajes;
 
 
