@@ -42,7 +42,7 @@ namespace Trabajo_Final_p1.Clases
 
         internal List<Viaje> ListPaquetes;
 
-
+        //constructor
         public Empresa(int IdEmp,string Nom,int codPos,string direccion )
         {
             this.IDEmpresa = IdEmp;

@@ -18,16 +18,14 @@ namespace Trabajo_Final_p1.Implementacion
     {
 
         private BindingList<Empresa> _empresa;
-
-
         public BindingList<Empresa> empresas => _empresa;
-
 
         public GestionEmpresaDao()
         {
             _empresa = new BindingList<Empresa>();
             CargarLista();
         }
+
         public BindingList<Empresa> CargarLista()
 
         {
@@ -43,6 +41,7 @@ namespace Trabajo_Final_p1.Implementacion
             }
             return _empresa;
         }
+
         public void Agregar(Empresa empresa)
         {
             if (empresa == null)

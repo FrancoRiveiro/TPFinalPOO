@@ -14,17 +14,10 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 namespace Trabajo_Final_p1.Clases
 {
     public class GestorCliente : IGestor <Cliente>
-
     {
         private BindingList<Cliente> _clientes;
-
-
         public BindingList<Cliente> clientes => _clientes;
-
-
-
         public BindingList<Cliente> CargarLista()
-
         {
             _clientes.Clear();
             foreach (var linea in File.ReadAllLines("Clientes.csv"))

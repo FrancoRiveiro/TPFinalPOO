@@ -10,8 +10,14 @@ namespace Trabajo_Final_p1.Clases
     {
         //constructor
 
-        public Viaje()
+        public Viaje(int id, string dest, DateTime salida, DateTime retorno, Empresa emp)
         {
+            this.IDViaje = id;
+            this.Destino = dest;
+            this.FechaSalida = salida;
+            this.FechaSalida = retorno;
+            this.Empresa = emp;
+                
 
         }
 
@@ -49,15 +55,16 @@ namespace Trabajo_Final_p1.Clases
             set { _fechaRetorno = value; }
         }
 
-        private Destino _destino;
+        private string _destino;
 
-        public Destino Destino
+        public string Destino
         {
             get { return _destino; }
             set { _destino = value; }
         }
 
-
+        internal List<Cliente> clientes;
+        
 
 
 
