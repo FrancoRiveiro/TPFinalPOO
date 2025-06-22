@@ -6,21 +6,17 @@ using System.Threading.Tasks;
 
 namespace Trabajo_Final_p1.Clases
 {
-    public class Cliente : Persona
+    public class Cliente : Usuario
     {
         //Hereda Nombre, apellido y DNI de la clase abstracta Persona
 
         //Constructor
-        public Cliente(string Nombre, string Apellido,string Contraseña, string Email,int Telefono,int DNI)
+        public Cliente(string Nombre, string Apellido,string Contraseña, string Email,int Telefono,int dni ) : base(Nombre, Apellido,dni, Contraseña, Email, false)
         
         {
-         this.Nombre = Nombre;
-         this.Apellido = Apellido;
-         this.Contraseña = Contraseña;
-         this.Email = Email;
+  
          this.Telefono = Telefono;
-         this.DNI = DNI;
-         this.Rol = false; // Rol de Cliente es false por defecto
+        
  
         }
 

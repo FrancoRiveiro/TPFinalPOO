@@ -77,5 +77,9 @@ namespace Trabajo_Final_p1.Forms
             }
         }
 
+        private void GestorEmpresa_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

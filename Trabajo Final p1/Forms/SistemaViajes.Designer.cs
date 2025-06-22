@@ -82,7 +82,7 @@
             // gestionarEmpresaToolStripMenuItem
             // 
             this.gestionarEmpresaToolStripMenuItem.Name = "gestionarEmpresaToolStripMenuItem";
-            this.gestionarEmpresaToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.gestionarEmpresaToolStripMenuItem.Size = new System.Drawing.Size(194, 34);
             this.gestionarEmpresaToolStripMenuItem.Text = "Gestionar ";
             // 
             // LoginToolStripMenuItem
@@ -99,8 +99,8 @@
             this.clienteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gestionarToolStripMenuItem});
             this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
-            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(81, 29);
-            this.clienteToolStripMenuItem.Text = "Cliente";
+            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(96, 29);
+            this.clienteToolStripMenuItem.Text = "Usuarios";
             // 
             // gestionarToolStripMenuItem
             // 
@@ -115,7 +115,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 33);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.toolStrip1.Size = new System.Drawing.Size(1364, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1364, 28);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);

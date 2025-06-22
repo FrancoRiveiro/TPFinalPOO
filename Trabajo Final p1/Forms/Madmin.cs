@@ -8,30 +8,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Trabajo_Final_p1.Clases;
-using Trabajo_Final_p1.Interfaces;
 
 namespace Trabajo_Final_p1.Forms
 {
-    public partial class Mcliente : Form
+    public partial class Madmin : Form
     {
+        private Administrador adminOriginal; // Cliente original para comparar cambios
 
-        private Cliente clienteOriginal; // Cliente original para comparar cambios
-       
-        private GestorUsuario<Cliente> gestorClienteInstance;
-        public Mcliente(Cliente cliente, GestorUsuario<Cliente>  gestor)
+        private GestorUsuario<Administrador> gestorAdminInstance;
+        public Madmin(Administrador admin, GestorUsuario<Administrador> gestor)
         {
             InitializeComponent(); // importante que esté
 
-            clienteOriginal = cliente;
-            this.gestorClienteInstance = gestor;
+            adminOriginal = admin;
+            this.gestorAdminInstance = gestor;
 
 
-            textNombre.Text = cliente.Nombre;
-            textApellido.Text = cliente.Apellido;
-            textContra.Text = cliente.Contraseña;
-            textEmail.Text = cliente.Email;
-            textCelular.Text = cliente.Telefono.ToString();
-            textDNI.Text = cliente.DNI.ToString();
+            textNombre.Text = admin.Nombre;
+            textApellido.Text = admin.Apellido;
+            textContra.Text = admin.Contraseña;
+            textEmail.Text = admin.Email;
+            textCelular.Text = admin.Telefono.ToString();
+            textDNI.Text = admin.DNI.ToString();
 
             // si no querés que se modifique el DNI
             textDNI.Enabled = false;
@@ -53,10 +51,10 @@ namespace Trabajo_Final_p1.Forms
                 int cel = int.Parse(textCelular.Text);
                 int dni = int.Parse(textDNI.Text); // si está deshabilitado, sigue siendo válido
 
-               // GestorCliente gestor = new GestorCliente();
-               
-                gestorClienteInstance.Modificar(clienteOriginal, nom, ape, contra, Email, cel, dni);
-              
+                // GestorCliente gestor = new GestorCliente();
+
+                gestorAdminInstance.Modificar(adminOriginal, nom, ape, contra, Email, cel, dni);
+
 
                 MessageBox.Show("Cliente modificado correctamente.");
                 this.Close(); // cierra el formulario
@@ -65,7 +63,7 @@ namespace Trabajo_Final_p1.Forms
             {
                 MessageBox.Show("Error al modificar: " + ex.Message);
             }
-    
+
         }
     }
 }

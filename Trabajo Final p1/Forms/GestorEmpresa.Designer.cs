@@ -121,7 +121,6 @@
             this.btnAceptar.TabIndex = 32;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
-           
             this.btnAceptar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bntAceptar_MouseDown);
             // 
             // GestorEmpresa
@@ -141,7 +140,7 @@
             this.Controls.Add(this.textId);
             this.Name = "GestorEmpresa";
             this.Text = "GestorEmpresa";
-      
+            this.Load += new System.EventHandler(this.GestorEmpresa_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -1,6 +1,6 @@
 ﻿namespace Trabajo_Final_p1.Forms
 {
-    partial class GestionCliente
+    partial class GestionUsuario
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionCliente));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionUsuario));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.comboboxTipo = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,17 +64,28 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // GestionarCliente
+            // comboboxTipo
+            // 
+            this.comboboxTipo.FormattingEnabled = true;
+            this.comboboxTipo.Items.AddRange(new object[] {
+            resources.GetString("comboboxTipo.Items"),
+            resources.GetString("comboboxTipo.Items1")});
+            resources.ApplyResources(this.comboboxTipo, "comboboxTipo");
+            this.comboboxTipo.Name = "comboboxTipo";
+            // 
+            // GestionUsuario
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.comboboxTipo);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "GestionarCliente";
+            this.Name = "GestionUsuario";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.GestionarCliente_Load);
+            this.Enter += new System.EventHandler(this.GestionCliente_Enter);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -85,5 +97,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ComboBox comboboxTipo;
     }
 }

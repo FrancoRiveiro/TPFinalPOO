@@ -145,7 +145,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;dataGridView1.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
     <value>508, 549</value>
@@ -172,7 +172,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
     <value>887, 549</value>
@@ -199,7 +199,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;button2.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="button3.Location" type="System.Drawing.Point, System.Drawing">
     <value>195, 549</value>
@@ -223,6 +223,33 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;button3.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="comboboxTipo.Items" xml:space="preserve">
+    <value>Clientes</value>
+  </data>
+  <data name="comboboxTipo.Items1" xml:space="preserve">
+    <value>Administradores</value>
+  </data>
+  <data name="comboboxTipo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>41, 70</value>
+  </data>
+  <data name="comboboxTipo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 28</value>
+  </data>
+  <data name="comboboxTipo.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;comboboxTipo.Name" xml:space="preserve">
+    <value>comboboxTipo</value>
+  </data>
+  <data name="&gt;&gt;comboboxTipo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboboxTipo.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;comboboxTipo.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -247,7 +274,7 @@
     <value>GestionarCliente</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>GestionCliente</value>
+    <value>GestionUsuario</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

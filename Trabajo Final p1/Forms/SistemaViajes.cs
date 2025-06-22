@@ -17,7 +17,7 @@ namespace Trabajo_Final_p1
         private Catalogo catalogo;
         private FormRegistro registrar;
         private GestionEmpresa gestionEmpresa;
-        private GestionCliente gestionarCliente;
+        private GestionUsuario gestionarCliente;
 
         public SistemaViajes()
         {
@@ -56,7 +56,7 @@ namespace Trabajo_Final_p1
             if (login == null)
             {
                 login = new Login();
-                //login.MdiParent = this;
+              
                 login.FormClosed += new FormClosedEventHandler(cerrarForms);
                 login.Form1 = this;
 
@@ -84,7 +84,7 @@ namespace Trabajo_Final_p1
 
         private void gestionarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            gestionarCliente = new GestionCliente();
+            gestionarCliente = new GestionUsuario();
             gestionarCliente.MdiParent = this;
             gestionarCliente.Show();
         }
