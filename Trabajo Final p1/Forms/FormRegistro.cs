@@ -16,7 +16,12 @@ namespace Trabajo_Final_p1
 {
     public partial class FormRegistro: Form
     {
-        
+
+        public Form registrar;
+
+
+       // private GestorCliente gestor = new GestorCliente();
+
 
         private GestorUsuario<Cliente> gestor = new GestorUsuario<Cliente>();
        
@@ -25,7 +30,7 @@ namespace Trabajo_Final_p1
         {
             InitializeComponent();
 
-        }
+        }s
 
         private void Form4_Load(object sender, EventArgs e)
         {
