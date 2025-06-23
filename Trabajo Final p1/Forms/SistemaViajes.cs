@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using Trabajo_Final_p1.Clases;
 using Trabajo_Final_p1.Forms;
+using Trabajo_Final_p1.Seguridad;
 
 namespace Trabajo_Final_p1
 {
@@ -12,7 +13,7 @@ namespace Trabajo_Final_p1
         private FormRegistro registrar;
         private GestionEmpresa gestionEmpresa;
         private GestionUsuario gestionarCliente;
-        private Usuario usuarioActual;
+     
         public SistemaViajes()
         {
             InitializeComponent();
@@ -43,54 +44,66 @@ namespace Trabajo_Final_p1
 
         private void LoginToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+            if (SesionManagger.SesionActiva)
+            {
+                var usuario = SesionManagger.Instancia.Usuario;
+
+                MessageBox.Show("Ya hay una sesión activa.");
+
+                if (usuario.Rol)
+                {
+                    UsuariosToolStripMenuItem.Visible = true;
+                    EmpresaToolStripMenuItem.Visible = true;
+                }
+                else
+                {
+                    UsuariosToolStripMenuItem.Visible = false;
+                    EmpresaToolStripMenuItem.Visible = false;
+                }
+
+                MessageBox.Show($"Ya ha iniciado sesión como {usuario.Nombre}");
+                return;
+            }
+
             login = new Login();
             login.Form1 = this;
-          
+
 
 
             if (login.ShowDialog() == DialogResult.OK)
             {
-               usuarioActual = login.usuarioLog;
-
-                if (usuarioActual != null)
+                try
                 {
+                    // Inicia sesión y obtiene el usuario activo
+                    var usuario = SesionManagger.Instancia.Usuario;
 
-                    if (usuarioActual.Rol)
 
-                    {
-                        UsuariosToolStripMenuItem.Visible = true;
-                        EmpresaToolStripMenuItem.Visible = true;
+                    // Si es un administrador, muestra los menús correspondientes
+                    if (usuario.Rol)
 
-                    }
+                        {
+                            UsuariosToolStripMenuItem.Visible = true;
+                            EmpresaToolStripMenuItem.Visible = true;
 
+                        }
+                    // Si es un cliente, oculta los menús de administración
                     else
                     {
-                        UsuariosToolStripMenuItem.Visible = false;
-                        EmpresaToolStripMenuItem.Visible = false;
-                    }
+                            UsuariosToolStripMenuItem.Visible = false;
+                            EmpresaToolStripMenuItem.Visible = false;
+                        }
 
-                    MessageBox.Show($"Bienvenido {usuarioActual.Nombre}");
+                        MessageBox.Show($"Bienvenido {usuario.Nombre}");
 
+  
                 }
-           
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, " Error de sesio ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             login = null;
-
-            /*
-            if (login == null)
-            {
-                login = new Login();
-              
-                login.FormClosed += new FormClosedEventHandler(cerrarForms);
-                login.Form1 = this;
-
-                login.Show();
-            }
-
-        else
-            {
-                login.Activate(); 
-            }*/
         }
 
         void cerrarForms(object sender, FormClosedEventArgs e)
@@ -118,6 +131,23 @@ namespace Trabajo_Final_p1
             gestionEmpresa = new GestionEmpresa();
             gestionEmpresa.MdiParent = this;
             gestionEmpresa.Show();
+        }
+
+        private void LogoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SesionManagger.CerrarSesion();
+                MessageBox.Show("Sesión cerrada correctamente.");
+
+
+                UsuariosToolStripMenuItem.Visible = false;
+                EmpresaToolStripMenuItem.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al cerrar sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

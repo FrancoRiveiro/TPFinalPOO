@@ -35,7 +35,10 @@ namespace Trabajo_Final_p1
 
         private void button1_Click(object sender, EventArgs e)
         {
+           
+            // Inicializa las variables para almacenar los datos del usuariow
             string[] datosUser = null;
+
             string Hash = string.Empty;
             string Email = this.textEmail.Text;
             string Contraseña = this.textContra.Text;
@@ -102,8 +105,8 @@ namespace Trabajo_Final_p1
                 }
 
                 // Si las credenciales son correctas, crea un nuevo cliente y muestra un mensaje de éxito
-              
-                MessageBox.Show($"Bienvenido ");
+                SesionManagger.IniciarSesion(usuarioLog);
+                
                 this.DialogResult = DialogResult.OK;
                 this.Close();
                 Form1.Enabled = true; // Habilita el formulario principal

@@ -33,10 +33,12 @@
             this.holaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EmpresaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionarEmpresaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.LoginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PerfilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.loginToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,8 +50,8 @@
             this.inicioToolStripMenuItem,
             this.holaToolStripMenuItem,
             this.EmpresaToolStripMenuItem,
-            this.LoginToolStripMenuItem,
-            this.UsuariosToolStripMenuItem});
+            this.UsuariosToolStripMenuItem,
+            this.PerfilToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1364, 33);
@@ -82,17 +84,8 @@
             // gestionarEmpresaToolStripMenuItem
             // 
             this.gestionarEmpresaToolStripMenuItem.Name = "gestionarEmpresaToolStripMenuItem";
-            this.gestionarEmpresaToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.gestionarEmpresaToolStripMenuItem.Size = new System.Drawing.Size(194, 34);
             this.gestionarEmpresaToolStripMenuItem.Text = "Gestionar ";
-            // 
-            // LoginToolStripMenuItem
-            // 
-            this.LoginToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.LoginToolStripMenuItem.AutoSize = false;
-            this.LoginToolStripMenuItem.Name = "LoginToolStripMenuItem";
-            this.LoginToolStripMenuItem.Size = new System.Drawing.Size(74, 29);
-            this.LoginToolStripMenuItem.Text = "Login";
-            this.LoginToolStripMenuItem.Click += new System.EventHandler(this.LoginToolStripMenuItem_Click);
             // 
             // UsuariosToolStripMenuItem
             // 
@@ -105,9 +98,20 @@
             // gestionarToolStripMenuItem
             // 
             this.gestionarToolStripMenuItem.Name = "gestionarToolStripMenuItem";
-            this.gestionarToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.gestionarToolStripMenuItem.Size = new System.Drawing.Size(189, 34);
             this.gestionarToolStripMenuItem.Text = "Gestionar";
             this.gestionarToolStripMenuItem.Click += new System.EventHandler(this.gestionarToolStripMenuItem_Click);
+            // 
+            // PerfilToolStripMenuItem
+            // 
+            this.PerfilToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.PerfilToolStripMenuItem.AutoSize = false;
+            this.PerfilToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loginToolStripMenuItem1,
+            this.logoutToolStripMenuItem});
+            this.PerfilToolStripMenuItem.Name = "PerfilToolStripMenuItem";
+            this.PerfilToolStripMenuItem.Size = new System.Drawing.Size(182, 29);
+            this.PerfilToolStripMenuItem.Text = "Perfil";
             // 
             // toolStrip1
             // 
@@ -119,6 +123,20 @@
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
+            // 
+            // loginToolStripMenuItem1
+            // 
+            this.loginToolStripMenuItem1.Name = "loginToolStripMenuItem1";
+            this.loginToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
+            this.loginToolStripMenuItem1.Text = "Login";
+            this.loginToolStripMenuItem1.Click += new System.EventHandler(this.LoginToolStripMenuItem_Click);
+            // 
+            // logoutToolStripMenuItem
+            // 
+            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.logoutToolStripMenuItem.Text = "Logout";
+            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.LogoutToolStripMenuItem_Click);
             // 
             // SistemaViajes
             // 
@@ -148,11 +166,13 @@
         private System.Windows.Forms.ToolStripMenuItem inicioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem holaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem EmpresaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem LoginToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem PerfilToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripMenuItem gestionarEmpresaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem UsuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loginToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
     }
 }
 
