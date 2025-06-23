@@ -30,7 +30,7 @@ namespace Trabajo_Final_p1
         {
             InitializeComponent();
 
-        }s
+        }
 
         private void Form4_Load(object sender, EventArgs e)
         {

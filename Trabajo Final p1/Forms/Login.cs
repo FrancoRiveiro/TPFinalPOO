@@ -12,14 +12,13 @@ namespace Trabajo_Final_p1
         public Form Form1;
 
         public FormRegistro registrar;
-
+        public Usuario usuarioLog {  get; private set; }
 
         public Login()
         {
             InitializeComponent();
         }
 
-        List<Cliente> Listcliente = new List<Cliente>();
 
         private void salir(object sender, EventArgs e)
         {
@@ -36,9 +35,8 @@ namespace Trabajo_Final_p1
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            string[] datosUser = null;
             string Hash = string.Empty;
-
             string Email = this.textEmail.Text;
             string Contraseña = this.textContra.Text;
 
@@ -69,16 +67,18 @@ namespace Trabajo_Final_p1
 
                         if (datos.Length >= 6 && datos[3] == Email) // Verifica si el email coincide
                         {
+                            datosUser = datos; // Guarda los datos del usuario
                             Hash = datos[2];
                             encontrado = true; // Marca que se encontró el email
                             break; // Sale del bucle si se encuentra el email
 
                         }
-                        else if (!encontrado && datos.Length >= 6 && datos[3] != Email) // Si no se ha encontrado el email
-                        {
-                            MessageBox.Show("El Email ingresado no está registrado. Por favor, regístrese primero.");
-                            return; // Sale del bucle si el email no está registrado
-                        }
+                       
+                    }
+                     if (!encontrado ) // Si no se ha encontrado el email
+                    {
+                        MessageBox.Show("El Email ingresado no está registrado. Por favor, regístrese primero.");
+                        return; // Sale del bucle si el email no está registrado
                     }
                 }
             }
@@ -86,9 +86,25 @@ namespace Trabajo_Final_p1
 
             if (Hash == Contraseña) // Compara la contraseña encriptada
             {
-                // Si las credenciales son correctas, crea un nuevo cliente y muestra un mensaje de éxito
 
+               bool rol = bool.Parse(datosUser[6]);
+                if (rol)
+                {
+
+                    usuarioLog = new Administrador(datosUser[0], datosUser[1], datosUser[2], datosUser[3],
+                    int.Parse(datosUser[4]), int.Parse(datosUser[5]));
+                
+                }
+                else
+                {
+                    usuarioLog = new Cliente(datosUser[0], datosUser[1], datosUser[2], datosUser[3], int.Parse(datosUser[4]), int.Parse(datosUser[5]));
+       
+                }
+
+                // Si las credenciales son correctas, crea un nuevo cliente y muestra un mensaje de éxito
+              
                 MessageBox.Show($"Bienvenido ");
+                this.DialogResult = DialogResult.OK;
                 this.Close();
                 Form1.Enabled = true; // Habilita el formulario principal
                 return; // Sale del bucle si las credenciales son correctas

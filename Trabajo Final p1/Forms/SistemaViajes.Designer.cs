@@ -34,7 +34,7 @@
             this.EmpresaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionarEmpresaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LoginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.UsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.menuStrip1.SuspendLayout();
@@ -49,7 +49,7 @@
             this.holaToolStripMenuItem,
             this.EmpresaToolStripMenuItem,
             this.LoginToolStripMenuItem,
-            this.clienteToolStripMenuItem});
+            this.UsuariosToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1364, 33);
@@ -82,7 +82,7 @@
             // gestionarEmpresaToolStripMenuItem
             // 
             this.gestionarEmpresaToolStripMenuItem.Name = "gestionarEmpresaToolStripMenuItem";
-            this.gestionarEmpresaToolStripMenuItem.Size = new System.Drawing.Size(194, 34);
+            this.gestionarEmpresaToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.gestionarEmpresaToolStripMenuItem.Text = "Gestionar ";
             // 
             // LoginToolStripMenuItem
@@ -94,13 +94,13 @@
             this.LoginToolStripMenuItem.Text = "Login";
             this.LoginToolStripMenuItem.Click += new System.EventHandler(this.LoginToolStripMenuItem_Click);
             // 
-            // clienteToolStripMenuItem
+            // UsuariosToolStripMenuItem
             // 
-            this.clienteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.UsuariosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gestionarToolStripMenuItem});
-            this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
-            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(96, 29);
-            this.clienteToolStripMenuItem.Text = "Usuarios";
+            this.UsuariosToolStripMenuItem.Name = "UsuariosToolStripMenuItem";
+            this.UsuariosToolStripMenuItem.Size = new System.Drawing.Size(96, 29);
+            this.UsuariosToolStripMenuItem.Text = "Usuarios";
             // 
             // gestionarToolStripMenuItem
             // 
@@ -115,7 +115,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 33);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.toolStrip1.Size = new System.Drawing.Size(1364, 28);
+            this.toolStrip1.Size = new System.Drawing.Size(1364, 25);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
@@ -151,7 +151,7 @@
         private System.Windows.Forms.ToolStripMenuItem LoginToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripMenuItem gestionarEmpresaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem clienteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem UsuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionarToolStripMenuItem;
     }
 }
