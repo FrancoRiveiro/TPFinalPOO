@@ -11,113 +11,112 @@ using Trabajo_Final_p1.Interfaces;
 
 namespace Trabajo_Final_p1.Implementacion
 {
-    /*
-    public  class GestionViajeDao: IGestor<Viaje>
+    public class GestionViajesDao : IGestor<Viaje>
     {
-
-
-        private BindingList<Viaje> _viaje ;
-
-
+        private BindingList<Viaje> _viaje;
         public BindingList<Viaje> viajes => _viaje;
 
-        
-        public GestionEmpresaDao()
+        GestionEmpresaDao gestor = new GestionEmpresaDao();
+        BindingList<Empresa> listaEmpresas = new BindingList<Empresa>();
+
+        public GestionViajesDao()
         {
+            listaEmpresas = gestor.CargarLista();
             _viaje = new BindingList<Viaje>();
-            CargarLista();
+            CargarLista(listaEmpresas);
         }
-        public BindingList<Viaje> CargarLista()
+        public BindingList<Viaje> CargarLista(BindingList<Empresa> empresas)
 
         {
-            _empresa.Clear();
-            foreach (var linea in File.ReadAllLines("Viaje.csv"))
+            _viaje.Clear();
+            foreach (var linea in File.ReadAllLines("Viajes.csv"))
             {
                 var partes = linea.Split(';');
-                if (partes.Length == 4)
+                if (partes.Length == 5)
                 {
-                    Empresa emp = new Empresa(Convert.ToInt32(partes[0]), partes[1], Convert.ToInt32(partes[2]), partes[3]);
-                    _empresa.Add(emp);
+
+                    Viaje via = new Viaje(Convert.ToInt32(partes[0]), (partes[1]), Convert.ToDateTime(partes[2]), Convert.ToDateTime(partes[3]),
+                        empresas.FirstOrDefault(e => e.Nombre.Equals(partes[4], StringComparison.OrdinalIgnoreCase)));
+                    _viaje.Add(via);
                 }
             }
-            return _empresa;
+            return _viaje;
         }
-        public void Agregar(Viaje empresa)
+
+        public void Agregar(Viaje viaje)
         {
-            if (empresa == null)
+            if (viaje == null)
 
             {
 
-                throw new ArgumentNullException(nameof(empresa), "La Empresa no puede ser nulo.");
+                throw new ArgumentNullException(nameof(viaje), "El viaje no puede ser nulo.");
             }
             else
             {
-                using (FileStream fs = new FileStream("Viaje.csv", FileMode.Append, FileAccess.Write))
+                using (FileStream fs = new FileStream("Viajes.csv", FileMode.Append, FileAccess.Write))
                 using (StreamWriter sw = new StreamWriter(fs))
                 {
-                    sw.WriteLine($"{empresa.IDEmpresa};{empresa.Nombre};{empresa.CodPostal};{empresa.Direccion}");
+                    sw.WriteLine($"{viaje.IDViaje};{viaje.Destino};{viaje.FechaSalida};{viaje.FechaRetorno};{viaje.Empresa.Nombre}");
                 }
-                this.CargarLista();
+                CargarLista(listaEmpresas);
             }
         }
 
-
-
-
-
-        public void Eliminar(int idEmpresa)
+        public void Eliminar(int idViaje)
         {
-            using (FileStream fs = new FileStream("Viaje.csv", FileMode.Truncate, FileAccess.Write))
+            using (FileStream fs = new FileStream("Viajes.csv", FileMode.Truncate, FileAccess.Write))
             {
                 using (StreamWriter sw = new StreamWriter(fs))
                 {
-                    foreach (var empresaR in empresas)
+                    foreach (var viajeR in viajes)
                     {
-                        if (empresaR.IDEmpresa != idEmpresa)
+                        if (viajeR.IDViaje != idViaje)
                         {
-                            string linea = ($"{empresaR.IDEmpresa};{empresaR.Nombre};{empresaR.CodPostal};{empresaR.Direccion}");
+                            string linea = ($"{viajeR.IDViaje};{viajeR.Destino};{viajeR.FechaSalida};{viajeR.FechaRetorno};{viajeR.Empresa.Nombre}");
                             sw.WriteLine(linea);
                         }
                     }
                 }
             }
-            this.CargarLista();
-            MessageBox.Show($"Cliente con DNI {idEmpresa} eliminado correctamente del archivo.", "Eliminación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.CargarLista(listaEmpresas);
+            MessageBox.Show($"Cliente con DNI {idViaje} eliminado correctamente del archivo.", "Eliminación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
 
-        public void Modificar(Viaje empresa, params object[] datos)
+        public void Modificar(Viaje viaje, params object[] datos)
         {
-            if (datos.Length < 4)
+            listaEmpresas = gestor.CargarLista();
+            CargarLista(listaEmpresas);
+
+            if (datos.Length < 5)
             {
-                throw new ArgumentException("Debe proporcionar al menos 2 datos para modificar el cliente.");
+                throw new ArgumentException("Debe proporcionar al menos 5 datos para modificar el viaje.");
             }
-            int IdEmp = Convert.ToInt32(datos[0]);
-            string nom = datos[1].ToString();
-            int CodPos = Convert.ToInt32(datos[2]);
-            string dir = datos[3].ToString();
+            int IdVia = Convert.ToInt32(datos[0]);
+            string destino = datos[1].ToString();
+            DateTime salida = Convert.ToDateTime(datos[2]);
+            DateTime retorno = Convert.ToDateTime(datos[3]);
+            Empresa empresa = listaEmpresas.FirstOrDefault(e => e.Nombre.Equals(datos[4]));
 
-
-
-            //busca en la lista de clientes leida del csv
-            int idBuscado = empresa.IDEmpresa;
-            var EmpresaR = empresas.FirstOrDefault(x => x.IDEmpresa == idBuscado);
-            if (empresa != null)
+            //busca en la lista de viajes leida del csv
+            int idBuscado = viaje.IDViaje;
+            var EmpresaR = viajes.FirstOrDefault(x => x.IDViaje == idBuscado);
+            if (viaje != null)
             {
-                empresa.IDEmpresa = IdEmp;
-                empresa.Nombre = nom;
-                empresa.CodPostal = CodPos;
-                empresa.Direccion = dir;
-
+                viaje.IDViaje = IdVia;
+                viaje.Destino = destino;
+                viaje.FechaSalida = salida;
+                viaje.FechaRetorno = retorno;
+                viaje.Empresa = empresa;
 
             }
 
             //reescribe el archivo con el cliente modificado
-            using (StreamWriter sw = new StreamWriter("Empresa.csv", false)) // false para sobrescribir
+            using (StreamWriter sw = new StreamWriter("Viajes.csv", false)) // false para sobrescribir
             {
-                foreach (var c in empresas)
+                foreach (var c in viajes)
                 {
-                    string linea = $"{c.IDEmpresa};{c.Nombre};{c.CodPostal};{c.Direccion}";
+                    string linea = $"{c.IDViaje};{c.Destino};{c.FechaSalida};{c.FechaRetorno};{c.Empresa.Nombre}";
                     sw.WriteLine(linea);
                 }
                 sw.Close();
@@ -125,12 +124,7 @@ namespace Trabajo_Final_p1.Implementacion
 
         }
 
-        public List<Viaje> Listar() => new List<Viaje>();
-
     }
-
-
-    */
 
 }
    

@@ -30,7 +30,7 @@ namespace Trabajo_Final_p1.Implementacion
 
         {
             _empresa.Clear();
-            foreach (var linea in File.ReadAllLines("Empresa.csv"))
+            foreach (var linea in File.ReadAllLines("Empresas.csv"))
             {
                 var partes = linea.Split(';');
                 if (partes.Length == 4)
@@ -52,7 +52,7 @@ namespace Trabajo_Final_p1.Implementacion
             }
             else
             {
-                using (FileStream fs = new FileStream("Empresa.csv", FileMode.Append, FileAccess.Write))
+                using (FileStream fs = new FileStream("Empresas.csv", FileMode.Append, FileAccess.Write))
                 using (StreamWriter sw = new StreamWriter(fs))
                 {
                     sw.WriteLine($"{empresa.IDEmpresa};{empresa.Nombre};{empresa.CodPostal};{empresa.Direccion}");
@@ -67,7 +67,7 @@ namespace Trabajo_Final_p1.Implementacion
 
            public void Eliminar(int idEmpresa)
         {
-            using (FileStream fs = new FileStream("Empresa.csv", FileMode.Truncate, FileAccess.Write))
+            using (FileStream fs = new FileStream("Empresas.csv", FileMode.Truncate, FileAccess.Write))
             {
                 using (StreamWriter sw = new StreamWriter(fs))
                 {
