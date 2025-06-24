@@ -153,6 +153,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\GestorViaje.resx">
       <DependentUpon>GestorViaje.cs</DependentUpon>
+		</EmbeddedResource>
     <EmbeddedResource Include="Forms\Madmin.resx">
       <DependentUpon>Madmin.cs</DependentUpon>
     </EmbeddedResource>
