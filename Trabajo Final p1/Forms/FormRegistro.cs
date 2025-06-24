@@ -9,17 +9,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Trabajo_Final_p1.Clases;
+using Trabajo_Final_p1.Forms;
+using Trabajo_Final_p1.Seguridad;
 
 namespace Trabajo_Final_p1
 {
     public partial class FormRegistro: Form
     {
+
         public Form registrar;
 
 
-        private GestorCliente gestor = new GestorCliente();
+       // private GestorCliente gestor = new GestorCliente();
 
 
+        private GestorUsuario<Cliente> gestor = new GestorUsuario<Cliente>();
+       
+        
         public FormRegistro()
         {
             InitializeComponent();
@@ -42,8 +48,9 @@ namespace Trabajo_Final_p1
                     int Telefono = Convert.ToInt32(this.textBox4.Text);
                     int DNI = Convert.ToInt32(this.textBox5.Text);
                     string Contraseña = this.textBox6.Text;
-                
-                    Cliente cliente = new Cliente(Nombre, Apellido,Contraseña, Email, Telefono, DNI)
+                    string ContraseñaEncriptada = ContraseñaHasher.GenerarHash(Contraseña); // Encripta la contraseña antes de guardarla
+
+                        Cliente cliente = new Cliente(Nombre, Apellido,ContraseñaEncriptada, Email, Telefono, DNI)
                     { };
 
                     gestor.Agregar(cliente);
@@ -52,7 +59,12 @@ namespace Trabajo_Final_p1
 
                     this.DialogResult = DialogResult.OK; // Indica que el registro fue exitoso
                     MessageBox.Show("Cliente registrado exitosamente");
-                    this.Close(); // Cierra el formulario después de registrar al cliente
+
+
+                /////// // Actualiza la grilla de clientes en el formulario de gestión
+                    
+                    
+                     this.Close(); // Cierra el formulario después de registrar al cliente
 
 
             }//Atrapa un error si hay un campo nulo
@@ -74,64 +86,6 @@ namespace Trabajo_Final_p1
             
         }
 
-        private void textBox6_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }

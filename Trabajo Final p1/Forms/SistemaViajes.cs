@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Trabajo_Final_p1.Clases;
 using Trabajo_Final_p1.Forms;
 
 namespace Trabajo_Final_p1
@@ -17,8 +11,8 @@ namespace Trabajo_Final_p1
         private Catalogo catalogo;
         private FormRegistro registrar;
         private GestionEmpresa gestionEmpresa;
-        private GestionCliente gestionarCliente;
-
+        private GestionUsuario gestionarCliente;
+        private Usuario usuarioActual;
         public SistemaViajes()
         {
             InitializeComponent();
@@ -26,15 +20,11 @@ namespace Trabajo_Final_p1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-           
-           // CenterToScreen();
-
-
-
-
-
+            UsuariosToolStripMenuItem.Visible = false;
+            EmpresaToolStripMenuItem.Visible = false;
+        
         }
+
 
         private void inicioToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -53,10 +43,44 @@ namespace Trabajo_Final_p1
 
         private void LoginToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            login = new Login();
+            login.Form1 = this;
+          
+
+
+            if (login.ShowDialog() == DialogResult.OK)
+            {
+               usuarioActual = login.usuarioLog;
+
+                if (usuarioActual != null)
+                {
+
+                    if (usuarioActual.Rol)
+
+                    {
+                        UsuariosToolStripMenuItem.Visible = true;
+                        EmpresaToolStripMenuItem.Visible = true;
+
+                    }
+
+                    else
+                    {
+                        UsuariosToolStripMenuItem.Visible = false;
+                        EmpresaToolStripMenuItem.Visible = false;
+                    }
+
+                    MessageBox.Show($"Bienvenido {usuarioActual.Nombre}");
+
+                }
+           
+            }
+            login = null;
+
+            /*
             if (login == null)
             {
                 login = new Login();
-                //login.MdiParent = this;
+              
                 login.FormClosed += new FormClosedEventHandler(cerrarForms);
                 login.Form1 = this;
 
@@ -66,13 +90,13 @@ namespace Trabajo_Final_p1
         else
             {
                 login.Activate(); 
-            }
+            }*/
         }
 
-          void cerrarForms(object sender, FormClosedEventArgs e) 
+        void cerrarForms(object sender, FormClosedEventArgs e)
         {
-            login=null;
-            catalogo=null;
+            login = null;
+            catalogo = null;
         }
 
         private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -80,11 +104,11 @@ namespace Trabajo_Final_p1
 
         }
 
-   
+
 
         private void gestionarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            gestionarCliente = new GestionCliente();
+            gestionarCliente = new GestionUsuario();
             gestionarCliente.MdiParent = this;
             gestionarCliente.Show();
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Trabajo_Final_p1.Clases
 {
-    public abstract class Persona
+    public abstract class Usuario
     {
         private string _nombre;
 
@@ -53,7 +53,18 @@ namespace Trabajo_Final_p1.Clases
             set { _rol = value; }
         }
 
+        public Usuario(string nombre, string apellido,int dni, string contraseña, string email, bool rol)
+        {
 
+            Nombre = nombre;
+            Apellido = apellido;
+            DNI = dni;
+            Contraseña = contraseña;
+            Email = email;
+            Rol = rol;
+        }
+
+       
 
     }
 }
