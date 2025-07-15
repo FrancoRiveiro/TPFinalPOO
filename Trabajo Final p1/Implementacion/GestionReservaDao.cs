@@ -57,8 +57,7 @@ namespace Trabajo_Final_p1.Implementacion
 
         public void Eliminar(int id)
         {
-            //No se van a eliminar reservas
-            throw new NotImplementedException();
+          
         }
 
         public void Modificar(Reserva entidad, params object[] valoresExtra)

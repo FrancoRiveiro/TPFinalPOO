@@ -37,7 +37,7 @@ namespace Trabajo_Final_p1.Implementacion
             foreach (var linea in File.ReadAllLines("Viajes.csv"))
             {
                 var partes = linea.Split(';');
-                if (partes.Length == 6)
+                if (partes.Length == 7)
                 {
 
                     Viaje via = new Viaje(
@@ -46,7 +46,8 @@ namespace Trabajo_Final_p1.Implementacion
                         Convert.ToDateTime(partes[2]),
                         Convert.ToDateTime(partes[3]),
                         empresas.FirstOrDefault(e => e.Nombre.Equals(partes[4], StringComparison.OrdinalIgnoreCase)),
-                        transportes.FirstOrDefault(t => t.Nombre.Equals(partes[5], StringComparison.OrdinalIgnoreCase))
+                        transportes.FirstOrDefault(t => t.Nombre.Equals(partes[5], StringComparison.OrdinalIgnoreCase)),
+                        Convert.ToInt32(partes[6])
                         );
                     _viaje.Add(via);
                 }
@@ -67,7 +68,7 @@ namespace Trabajo_Final_p1.Implementacion
                 using (FileStream fs = new FileStream("Viajes.csv", FileMode.Append, FileAccess.Write))
                 using (StreamWriter sw = new StreamWriter(fs))
                 {
-                    sw.WriteLine($"{viaje.IDViaje};{viaje.Destino};{viaje.FechaSalida};{viaje.FechaRetorno};{viaje.Empresa.Nombre};{viaje.Transporte.Nombre}");
+                    sw.WriteLine($"{viaje.IDViaje};{viaje.Destino};{viaje.FechaSalida};{viaje.FechaRetorno};{viaje.Empresa.Nombre};{viaje.Transporte.Nombre};{viaje.KM}");
                 }
                 CargarLista(listaEmpresas, listaTranportes);
             }
@@ -83,7 +84,7 @@ namespace Trabajo_Final_p1.Implementacion
                     {
                         if (viajeR.IDViaje != idViaje)
                         {
-                            string linea = ($"{viajeR.IDViaje};{viajeR.Destino};{viajeR.FechaSalida};{viajeR.FechaRetorno};{viajeR.Empresa.Nombre};{viajeR.Transporte.Nombre}");
+                            string linea = ($"{viajeR.IDViaje};{viajeR.Destino};{viajeR.FechaSalida};{viajeR.FechaRetorno};{viajeR.Empresa.Nombre};{viajeR.Transporte.Nombre};{viajeR.KM}");
                             sw.WriteLine(linea);
                         }
                     }
@@ -100,7 +101,7 @@ namespace Trabajo_Final_p1.Implementacion
             listaTranportes = gestorT.CargarLista();
             CargarLista(listaEmpresas, listaTranportes);
 
-            if (datos.Length < 6)
+            if (datos.Length < 7)
             {
                 throw new ArgumentException("Debe proporcionar al menos 6 datos para modificar el viaje.");
             }
@@ -110,6 +111,7 @@ namespace Trabajo_Final_p1.Implementacion
             DateTime retorno = Convert.ToDateTime(datos[3]);
             Empresa empresa = listaEmpresas.FirstOrDefault(e => e.Nombre.Equals(datos[4]));
             MedioDeTransporte transporte = listaTranportes.FirstOrDefault(c => c.Nombre.Equals(datos[5]));
+            int km = Convert.ToInt32(datos[6]);
 
             //busca en la lista de viajes leida del csv
             int idBuscado = viaje.IDViaje;
@@ -121,6 +123,8 @@ namespace Trabajo_Final_p1.Implementacion
                 viaje.FechaSalida = salida;
                 viaje.FechaRetorno = retorno;
                 viaje.Empresa = empresa;
+                viaje.Transporte = transporte;
+                viaje.KM = km;
 
 
             }
@@ -130,7 +134,7 @@ namespace Trabajo_Final_p1.Implementacion
             {
                 foreach (var c in viajes)
                 {
-                    string linea = $"{c.IDViaje};{c.Destino};{c.FechaSalida};{c.FechaRetorno};{c.Empresa.Nombre};{c.Transporte.Nombre}";
+                    string linea = $"{c.IDViaje};{c.Destino};{c.FechaSalida};{c.FechaRetorno};{c.Empresa.Nombre};{c.Transporte.Nombre};{c.KM}";
                     sw.WriteLine(linea);
                 }
                 sw.Close();

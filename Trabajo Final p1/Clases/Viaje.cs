@@ -10,7 +10,7 @@ namespace Trabajo_Final_p1.Clases
     {
         //constructor
 
-        public Viaje(int id, string dest, DateTime salida, DateTime retorno, Empresa emp, MedioDeTransporte transp)
+        public Viaje(int id, string dest, DateTime salida, DateTime retorno, Empresa emp, MedioDeTransporte transp, int km)
         {
             this.IDViaje = id;
             this.Destino = dest;
@@ -18,7 +18,9 @@ namespace Trabajo_Final_p1.Clases
             this.FechaRetorno = retorno;
             this.Empresa = emp;
             this.Transporte = transp;
-
+            this.CuposDisponibles = transp.Cupos;
+            this.KM = km;
+            this.Costo = this.CalcularCostoTotal();
         }
 
         //propiedades
@@ -79,7 +81,25 @@ namespace Trabajo_Final_p1.Clases
             get { return _km; }
             set { _km = value; }
         }
-       
+
+        private int _cuposDisponibles;
+
+        public int CuposDisponibles
+        {
+            get { return _cuposDisponibles; }
+            set { _cuposDisponibles = value; }
+        }
+
+        private int _costo;
+
+        public int Costo
+        {
+            get { return _costo; }
+            set { _costo = value; }
+        }
+
+
+
 
 
         public int CalcularCostoTotal()

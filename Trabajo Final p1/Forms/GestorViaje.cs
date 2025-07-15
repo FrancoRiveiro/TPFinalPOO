@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Trabajo_Final_p1.Clases;
 using Trabajo_Final_p1.Implementacion;
 using Trabajo_Final_p1.Interfaces;
+using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
@@ -24,10 +25,29 @@ namespace Trabajo_Final_p1.Forms
         BindingList<Viaje> viajes = new BindingList<Viaje>();
         BindingList<MedioDeTransporte> transportes = new BindingList<MedioDeTransporte>();
         BindingList<Empresa> empresas = new BindingList<Empresa>();
-        public GestorViaje(GestionViajesDao gestionV)
+        private bool alta = false;
+        Viaje miViaje;
+        public GestorViaje(GestionViajesDao gestionV,bool alta = true, Viaje viajeSelec = null)
         {
             InitializeComponent();
+            this.alta = alta;
+            this.Text = alta ? "Alta Viaje" : "Modificar Modificar";
             this.GestorV = gestionV;
+            miViaje = viajeSelec;
+
+            if(miViaje != null)
+            {
+                textBox2.Text = miViaje.Destino;
+                dateTimePicker1.Value = miViaje.FechaSalida;
+                dateTimePicker2.Value = miViaje.FechaRetorno;
+                comboBox1.IsAccessible = false;
+                comboBox2.IsAccessible = false;
+                textBox1.Text = miViaje.KM.ToString();
+                
+
+               
+            }
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -57,12 +77,15 @@ namespace Trabajo_Final_p1.Forms
             Empresa empresa = comboBox1.SelectedItem as Empresa;
             MedioDeTransporte transporte = comboBox2.SelectedItem as MedioDeTransporte;
             Viaje viaje = new Viaje(nuevoViajeID,
-                textBox2.Text,dateTimePicker1.Value,
+                textBox2.Text,
+                dateTimePicker1.Value,
                 dateTimePicker2.Value,
                 empresa,
-                transporte);
+                transporte,
+                Convert.ToInt32(textBox1.Text));
             GestorV.Agregar(viaje);
             MessageBox.Show($"Viaje con Destino:'{viaje.Destino}' agregado correctamente con ID: {nuevoViajeID}.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
            
             this.Close();
         }
@@ -91,6 +114,11 @@ namespace Trabajo_Final_p1.Forms
             {
                 MessageBox.Show($"Error al cargar transportes: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
     

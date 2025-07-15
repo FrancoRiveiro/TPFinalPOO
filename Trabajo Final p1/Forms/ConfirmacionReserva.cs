@@ -9,13 +9,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Trabajo_Final_p1.Clases;
 using Trabajo_Final_p1.Implementacion;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Trabajo_Final_p1.Forms
 {
     public partial class ConfirmacionReserva : Form
     {
+        Form Pagar = new Form();
         Usuario usuarioLogueado;
         Viaje viaje;
+
         private int _cuposDeseados;
 
         public int CuposDeseados
@@ -23,6 +26,7 @@ namespace Trabajo_Final_p1.Forms
             get { return _cuposDeseados; }
             set { _cuposDeseados = value; }
         }
+
 
 
         public ConfirmacionReserva(Viaje _viaje, Usuario _usuario)
@@ -36,27 +40,46 @@ namespace Trabajo_Final_p1.Forms
 
 
 
+
         }
-        SistemaGestionViajes sistema;
+       
         
 
         
 
         private void ConfirmacionReserva_Load(object sender, EventArgs e)
         {
-            SistemaGestionViajes sistema = new SistemaGestionViajes();
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (CuposDeseados <= sistema.CalcularCuposDisponibles(viaje.IDViaje)) {
-                sistema.RealizarPagoYReserva(usuarioLogueado.DNI, viaje.IDViaje, CuposDeseados); 
+            SistemaGestionViajes sistema = new SistemaGestionViajes();
+            if (CuposDeseados <= sistema.CalcularCuposDisponibles(viaje.IDViaje))
+            {
+                sistema.RealizarPagoYReserva(usuarioLogueado.DNI, viaje.IDViaje, CuposDeseados);
             }
             else
             {
                 MessageBox.Show($"No hay capacidad para {CuposDeseados} pasajeros mas en este viaje.");
             }
-            
+
+            Pagar = new Pagar(viaje, usuarioLogueado, CuposDeseados);
+            Pagar.ShowDialog();
+            if (Pagar.DialogResult == DialogResult.OK)
+            {
+                MessageBox.Show("Reserva realizada con éxito.");
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Reserva cancelada.");
+                this.DialogResult = DialogResult.Cancel;
+                this.Close();
+            }
+
+
         }
     }
 }

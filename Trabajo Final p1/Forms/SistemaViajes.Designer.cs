@@ -30,14 +30,13 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.inicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.holaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EmpresaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionarEmpresaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LoginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.viajesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,7 +45,6 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.inicioToolStripMenuItem,
-            this.holaToolStripMenuItem,
             this.EmpresaToolStripMenuItem,
             this.LoginToolStripMenuItem,
             this.UsuariosToolStripMenuItem,
@@ -65,13 +63,6 @@
             this.inicioToolStripMenuItem.Text = "inicio";
             this.inicioToolStripMenuItem.Click += new System.EventHandler(this.inicioToolStripMenuItem_Click);
             // 
-            // holaToolStripMenuItem
-            // 
-            this.holaToolStripMenuItem.Name = "holaToolStripMenuItem";
-            this.holaToolStripMenuItem.Size = new System.Drawing.Size(42, 29);
-            this.holaToolStripMenuItem.Text = "hola";
-            this.holaToolStripMenuItem.Click += new System.EventHandler(this.holaToolStripMenuItem_Click);
-            // 
             // EmpresaToolStripMenuItem
             // 
             this.EmpresaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -84,7 +75,7 @@
             // gestionarEmpresaToolStripMenuItem
             // 
             this.gestionarEmpresaToolStripMenuItem.Name = "gestionarEmpresaToolStripMenuItem";
-            this.gestionarEmpresaToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.gestionarEmpresaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.gestionarEmpresaToolStripMenuItem.Text = "Gestionar ";
             // 
             // LoginToolStripMenuItem
@@ -111,6 +102,13 @@
             this.gestionarToolStripMenuItem.Text = "Gestionar";
             this.gestionarToolStripMenuItem.Click += new System.EventHandler(this.gestionarToolStripMenuItem_Click);
             // 
+            // viajesToolStripMenuItem
+            // 
+            this.viajesToolStripMenuItem.Name = "viajesToolStripMenuItem";
+            this.viajesToolStripMenuItem.Size = new System.Drawing.Size(49, 29);
+            this.viajesToolStripMenuItem.Text = "Viajes";
+            this.viajesToolStripMenuItem.Click += new System.EventHandler(this.viajesToolStripMenuItem_Click);
+            // 
             // toolStrip1
             // 
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
@@ -121,13 +119,6 @@
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
-            // 
-            // viajesToolStripMenuItem
-            // 
-            this.viajesToolStripMenuItem.Name = "viajesToolStripMenuItem";
-            this.viajesToolStripMenuItem.Size = new System.Drawing.Size(49, 29);
-            this.viajesToolStripMenuItem.Text = "Viajes";
-            this.viajesToolStripMenuItem.Click += new System.EventHandler(this.viajesToolStripMenuItem_Click);
             // 
             // SistemaViajes
             // 
@@ -140,7 +131,7 @@
             this.ForeColor = System.Drawing.SystemColors.Desktop;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SistemaViajes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema Viajes";
@@ -156,7 +147,6 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem inicioToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem holaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem EmpresaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem LoginToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStrip1;
