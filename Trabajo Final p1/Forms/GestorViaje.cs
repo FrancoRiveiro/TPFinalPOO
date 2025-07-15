@@ -4,22 +4,30 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Trabajo_Final_p1.Clases;
 using Trabajo_Final_p1.Implementacion;
+using Trabajo_Final_p1.Interfaces;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace Trabajo_Final_p1.Forms
 {
     public partial class GestorViaje : Form
     {
-        GestionEmpresaDao gestionEmpresa = new GestionEmpresaDao();
+        private GestionEmpresaDao gestionE;
+        private GestionTransporteDao gestionT;
+        private GestionViajesDao GestorV;
+        BindingList<Viaje> viajes = new BindingList<Viaje>();
+        BindingList<MedioDeTransporte> transportes = new BindingList<MedioDeTransporte>();
         BindingList<Empresa> empresas = new BindingList<Empresa>();
-        public GestorViaje()
+        public GestorViaje(GestionViajesDao gestionV)
         {
             InitializeComponent();
+            this.GestorV = gestionV;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -34,7 +42,56 @@ namespace Trabajo_Final_p1.Forms
 
         private void GestorViaje_Load(object sender, EventArgs e)
         {
-            empresas = gestionEmpresa.CargarLista();
+            gestionE = new GestionEmpresaDao();
+            gestionT = new GestionTransporteDao();
+           
+            
+            CargarComboBox();
+           
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int nuevoViajeID = GestorV.viajes.Count > 0 ? GestorV.viajes.Max(v => v.IDViaje) + 1 : 1;
+            Empresa empresa = comboBox1.SelectedItem as Empresa;
+            MedioDeTransporte transporte = comboBox2.SelectedItem as MedioDeTransporte;
+            Viaje viaje = new Viaje(nuevoViajeID,
+                textBox2.Text,dateTimePicker1.Value,
+                dateTimePicker2.Value,
+                empresa,
+                transporte);
+            GestorV.Agregar(viaje);
+            MessageBox.Show($"Viaje con Destino:'{viaje.Destino}' agregado correctamente con ID: {nuevoViajeID}.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+           
+            this.Close();
+        }
+        private void CargarComboBox()
+        {
+            try
+            {
+                BindingList<Empresa> listaEmpresas = gestionE.CargarLista();
+                comboBox1.DataSource = listaEmpresas;
+                comboBox1.DisplayMember = "Nombre"; 
+                comboBox1.ValueMember = null; 
+                                                      
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar empresas: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            try 
+            {
+                BindingList<MedioDeTransporte> listaTransportes = gestionT.CargarLista();
+                comboBox2.DataSource = listaTransportes;
+                comboBox2.DisplayMember = "Nombre";
+                comboBox2.ValueMember = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar transportes: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
+    
 }

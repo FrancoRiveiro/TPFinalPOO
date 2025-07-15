@@ -2,33 +2,48 @@
 using System.Windows.Forms;
 using Trabajo_Final_p1.Clases;
 using Trabajo_Final_p1.Forms;
+using Trabajo_Final_p1.Implementacion;
 
 namespace Trabajo_Final_p1
 {
     public partial class SistemaViajes : Form
     {
+        //forms
         private Login login;
         private Catalogo catalogo;
         private FormRegistro registrar;
         private GestionEmpresa gestionEmpresa;
         private GestionUsuario gestionarCliente;
         private Usuario usuarioActual;
+        private GestorViaje gestorViaje;
+        private GestionViajes gestionViajes;
+        //DAOS
+        private GestionViajesDao gestorV;
+        private GestionTransporteDao gestorT;
+        private GestionReservaDao gestorR;
+        private GestionEmpresaDao gestorE;
+        private GestorUsuario<Cliente> gestorC;
+        
+
         public SistemaViajes()
         {
             InitializeComponent();
+            gestorV = new GestionViajesDao();
+            gestorE = new GestionEmpresaDao();
+            gestorT = new GestionTransporteDao();           
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            UsuariosToolStripMenuItem.Visible = false;
-            EmpresaToolStripMenuItem.Visible = false;
+            UsuariosToolStripMenuItem.Visible = true;
+            EmpresaToolStripMenuItem.Visible = true;
         
         }
 
 
         private void inicioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            catalogo = new Catalogo();
+            catalogo = new Catalogo(usuarioActual);
             catalogo.FormClosed += new FormClosedEventHandler(cerrarForms);
             catalogo.MdiParent = this;
 
@@ -118,6 +133,14 @@ namespace Trabajo_Final_p1
             gestionEmpresa = new GestionEmpresa();
             gestionEmpresa.MdiParent = this;
             gestionEmpresa.Show();
+        }
+
+        private void viajesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            gestionViajes = new GestionViajes(gestorV, gestorE, gestorT);
+            gestionViajes.MdiParent = this;
+            gestionViajes.Show();
+            
         }
     }
 }

@@ -212,7 +212,13 @@ namespace Trabajo_Final_p1.Clases
 
         }
 
-
+        public T Obtener(int dni)
+        {
+            
+            
+              return _usuarios.FirstOrDefault(v => v.DNI == dni);
+            
+        }
     }
 }
 

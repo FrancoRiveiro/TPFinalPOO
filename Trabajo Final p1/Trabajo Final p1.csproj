@@ -63,11 +63,22 @@
   <ItemGroup>
     <Compile Include="Clases\Administrador.cs" />
     <Compile Include="Clases\Cliente.cs" />
-    <Compile Include="Clases\Destino.cs" />
     <Compile Include="Clases\Empresa.cs" />
-    <Compile Include="Clases\Listas.cs" />
     <Compile Include="Clases\MedioDeTransporte.cs" />
     <Compile Include="Clases\Reserva.cs" />
+    <Compile Include="Clases\SistemaGestionViajes.cs" />
+    <Compile Include="Forms\ConfirmacionReserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ConfirmacionReserva.Designer.cs">
+      <DependentUpon>ConfirmacionReserva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GestionViajes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GestionViajes.Designer.cs">
+      <DependentUpon>GestionViajes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\GestorViaje.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +110,8 @@
       <DependentUpon>GestionEmpresa.cs</DependentUpon>
     </Compile>
     <Compile Include="Implementacion\GestionEmpresaDao.cs" />
+    <Compile Include="Implementacion\GestionReservaDao.cs" />
+    <Compile Include="Implementacion\GestionTransporteDao.cs" />
     <Compile Include="Implementacion\GestionViajeDao.cs" />
     <Compile Include="Implementacion\GestorUsuario.cs" />
     <Compile Include="Clases\Usuario.cs" />
@@ -144,11 +157,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seguridad\ContraseñaHasher.cs" />
     <Compile Include="Seguridad\SesionManagger.cs" />
+    <EmbeddedResource Include="Forms\ConfirmacionReserva.resx">
+      <DependentUpon>ConfirmacionReserva.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form5.resx">
       <DependentUpon>Form5.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\GestionEmpresa.resx">
       <DependentUpon>GestionEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GestionViajes.resx">
+      <DependentUpon>GestionViajes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\GestorEmpresa.resx">
       <DependentUpon>GestorEmpresa.cs</DependentUpon>
