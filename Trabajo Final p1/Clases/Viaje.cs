@@ -18,7 +18,7 @@ namespace Trabajo_Final_p1.Clases
             this.FechaRetorno = retorno;
             this.Empresa = emp;
             this.Transporte = transp;
-            this.CuposDisponibles = transp.Cupos;
+            this.CuposTotales = transp.Cupos;
             this.KM = km;
             this.Costo = this.CalcularCostoTotal();
         }
@@ -27,6 +27,14 @@ namespace Trabajo_Final_p1.Clases
 
         string NombreEmpresa => Empresa?.Nombre;
         string NombreTransporte => Transporte?.Nombre;
+        private int _cuposTotales;
+
+        public int CuposTotales
+        {
+            get { return _cuposTotales; }
+            set { _cuposTotales = value; }
+        }
+
         private Empresa _empresa;
 
         public Empresa Empresa

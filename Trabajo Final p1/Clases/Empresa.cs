@@ -39,8 +39,7 @@ namespace Trabajo_Final_p1.Clases
             get { return  _Direccion; }
             set {  _Direccion = value; }
         }
-
-        internal List<Viaje> ListPaquetes;
+              
 
         //constructor
         public Empresa(int IdEmp,string Nom,int codPos,string direccion )

@@ -40,7 +40,8 @@ namespace Trabajo_Final_p1.Forms
                 Destino = viaje.Destino,
                 FechaSalida = viaje.FechaSalida.ToShortDateString(), // Formatear la fecha
                 FechaRetorno = viaje.FechaRetorno.ToShortDateString(), // Formatear la fecha
-                CuposDisponibles = viaje.CuposDisponibles,
+                CuposTotales = viaje.CuposTotales,
+                CuposDisponibles = sistemaGV.CalcularCuposDisponibles(viaje.IDViaje), // Calcular los cupos disponibles
                 NombreEmpresa = viaje.Empresa?.Nombre, // Accede al nombre de la empresa
                 TipoTransporte = viaje.Transporte?.Nombre // Accede al tipo de transporte
             }).ToList(); // Convertir el resultado a una lista
@@ -105,7 +106,8 @@ namespace Trabajo_Final_p1.Forms
                 Destino = viaje.Destino,
                 FechaSalida = viaje.FechaSalida.ToShortDateString(), // Formatear la fecha
                 FechaRetorno = viaje.FechaRetorno.ToShortDateString(), // Formatear la fecha
-                CuposDisponibles = viaje.CuposDisponibles,
+                CuposTotales = viaje.CuposTotales,
+                CuposDisponibles = sistemaGV.CalcularCuposDisponibles(viaje.IDViaje), // Calcular los cupos disponibles
                 NombreEmpresa = viaje.Empresa?.Nombre, // Accede al nombre de la empresa
                 TipoTransporte = viaje.Transporte?.Nombre // Accede al tipo de transporte
             }).ToList(); // Convertir el resultado a una lista

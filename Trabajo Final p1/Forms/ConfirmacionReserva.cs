@@ -35,18 +35,9 @@ namespace Trabajo_Final_p1.Forms
             viaje = _viaje;
             label3.Text = viaje.Destino;
             usuarioLogueado = _usuario;
-            CuposDeseados = (int)numericUpDown1.Value;
             
-
-
-
-
         }
-       
-        
-
-        
-
+ 
         private void ConfirmacionReserva_Load(object sender, EventArgs e)
         {
             
@@ -55,31 +46,35 @@ namespace Trabajo_Final_p1.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             SistemaGestionViajes sistema = new SistemaGestionViajes();
+            CuposDeseados = Convert.ToInt32(textBox1.Text);
             if (CuposDeseados <= sistema.CalcularCuposDisponibles(viaje.IDViaje))
             {
-                sistema.RealizarPagoYReserva(usuarioLogueado.DNI, viaje.IDViaje, CuposDeseados);
+                // 2. Crea y muestra el formulario de pago.
+                Pagar = new Pagar(viaje, usuarioLogueado, CuposDeseados);
+                Pagar.ShowDialog();                
+                if (Pagar.DialogResult == DialogResult.OK)
+                {                 
+                    sistema.RealizarPagoYReserva(usuarioLogueado.DNI, viaje.IDViaje, CuposDeseados);
+
+                    MessageBox.Show("Reserva realizada con éxito.");
+                    this.DialogResult = DialogResult.OK; 
+                    this.Close();
+                }
+                else
+                {
+                  
+                    MessageBox.Show("Reserva cancelada.");
+                    this.DialogResult = DialogResult.Cancel;
+                    this.Close();
+                }
             }
             else
             {
-                MessageBox.Show($"No hay capacidad para {CuposDeseados} pasajeros mas en este viaje.");
+                // Si no hay cupos suficientes, se muestra este mensaje sin abrir el formulario de pago.
+                MessageBox.Show($"No hay capacidad para {CuposDeseados} pasajeros más en este viaje.");
+                this.DialogResult = DialogResult.Cancel; // Considera esto como una cancelación también
+                this.Close(); // Cierra el formulario
             }
-
-            Pagar = new Pagar(viaje, usuarioLogueado, CuposDeseados);
-            Pagar.ShowDialog();
-            if (Pagar.DialogResult == DialogResult.OK)
-            {
-                MessageBox.Show("Reserva realizada con éxito.");
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Reserva cancelada.");
-                this.DialogResult = DialogResult.Cancel;
-                this.Close();
-            }
-
-
         }
     }
 }

@@ -35,20 +35,18 @@ namespace Trabajo_Final_p1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            UsuariosToolStripMenuItem.Visible = true;
-            EmpresaToolStripMenuItem.Visible = true;
-        
+            UsuariosToolStripMenuItem.Visible = false;
+            EmpresaToolStripMenuItem.Visible = false;
+            inicioToolStripMenuItem.Visible = false;
+            viajesToolStripMenuItem.Visible = false;
         }
-
 
         private void inicioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             catalogo = new Catalogo(usuarioActual);
             catalogo.FormClosed += new FormClosedEventHandler(cerrarForms);
             catalogo.MdiParent = this;
-
             catalogo.Show();
-
         }
 
         private void holaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -59,8 +57,7 @@ namespace Trabajo_Final_p1
         private void LoginToolStripMenuItem_Click(object sender, EventArgs e)
         {
             login = new Login();
-            login.Form1 = this;
-          
+            login.Form1 = this;        
 
 
             if (login.ShowDialog() == DialogResult.OK)
@@ -75,6 +72,7 @@ namespace Trabajo_Final_p1
                     {
                         UsuariosToolStripMenuItem.Visible = true;
                         EmpresaToolStripMenuItem.Visible = true;
+                        viajesToolStripMenuItem.Visible = true;
 
                     }
 
@@ -82,30 +80,17 @@ namespace Trabajo_Final_p1
                     {
                         UsuariosToolStripMenuItem.Visible = false;
                         EmpresaToolStripMenuItem.Visible = false;
+                        viajesToolStripMenuItem.Visible = false;
+                        inicioToolStripMenuItem.Visible = true;
                     }
 
                     MessageBox.Show($"Bienvenido {usuarioActual.Nombre}");
 
                 }
+                
            
             }
-            login = null;
-
-            /*
-            if (login == null)
-            {
-                login = new Login();
-              
-                login.FormClosed += new FormClosedEventHandler(cerrarForms);
-                login.Form1 = this;
-
-                login.Show();
-            }
-
-        else
-            {
-                login.Activate(); 
-            }*/
+            login = null;         
         }
 
         void cerrarForms(object sender, FormClosedEventArgs e)

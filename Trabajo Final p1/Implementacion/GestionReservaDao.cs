@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Trabajo_Final_p1.Clases;
 using Trabajo_Final_p1.Forms;
 using Trabajo_Final_p1.Interfaces;
@@ -57,7 +58,23 @@ namespace Trabajo_Final_p1.Implementacion
 
         public void Eliminar(int id)
         {
-          
+            using (FileStream fs = new FileStream("Reservas.csv", FileMode.Truncate, FileAccess.Write))
+            {
+                using (StreamWriter sw = new StreamWriter(fs))
+                {
+                    foreach (var reserva in reservas)
+                    {
+                        if (reserva.IdReserva != id)
+                        {
+                            string linea = ($"{reserva.IdReserva};{reserva.Cupos};{reserva.Cliente.DNI};{reserva.ViajeReservado.IDViaje};{reserva.CostoTotal}");
+                            sw.WriteLine(linea);
+                        }
+                    }
+                }
+            }
+            this.CargarLista();
+            MessageBox.Show($"Reserva con Id {id} eliminado correctamente del archivo.", "Eliminación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
 
         public void Modificar(Reserva entidad, params object[] valoresExtra)

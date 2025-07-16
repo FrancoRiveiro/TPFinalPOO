@@ -89,6 +89,7 @@
             this.Controls.Add(this.btnAlta);
             this.Controls.Add(this.dgvViajes);
             this.Name = "GestionViajes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "GestionViajes";
             this.Load += new System.EventHandler(this.GestionViajes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvViajes)).EndInit();

@@ -26,8 +26,7 @@ namespace Trabajo_Final_p1.Implementacion
             //cargamos ambas listas de Transportes y Empresas
             listaTranportes = gestorT.CargarLista();
             listaEmpresas = gestorE.CargarLista();
-            _viaje = new BindingList<Viaje>();
-            
+            _viaje = new BindingList<Viaje>();            
             _viaje = CargarLista(listaEmpresas, listaTranportes);
         }
         public BindingList<Viaje> CargarLista(BindingList<Empresa> empresas, BindingList<MedioDeTransporte> transportes)

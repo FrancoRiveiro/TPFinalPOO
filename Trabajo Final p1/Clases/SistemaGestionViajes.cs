@@ -14,11 +14,8 @@ namespace Trabajo_Final_p1.Clases
         //Aca vamos a tener ciertas logicas de negocio
 
         private GestorUsuario<Cliente> gestorC;
-
         private GestionViajesDao gestorV;
-
         private GestionEmpresaDao gestorE;
-
         private GestionReservaDao gestorR;
 
         public SistemaGestionViajes()
